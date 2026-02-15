@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모티브 틀 생성기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&family=Noto+Serif+KR:wght@300;400;700&family=Song+Myung&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <!-- 왼쪽 컨트롤 패널 -->
+    <aside class="control-panel">
+        <header class="panel-header">
+            <h1>OC Motif Styler</h1>
+            <p>체크박스를 선택해 나만의 모티브 틀을 디자인하세요.</p>
+        </header>
+
+        <!-- 배경 및 폰트 설정 -->
+        <div class="control-group">
+            <h3>🎨 스타일 설정</h3>
+            <div class="input-row">
+                <label for="bg-select" style="display:block; margin-bottom:5px;">배경 스타일</label>
+                <select id="bg-select">
+                    <option value="bg-pattern-dot">도트 패턴</option>
+                    <option value="bg-pattern-grid">모눈종이</option>
+                    <option value="bg-pattern-paper">줄글 노트</option>
+                    <option value="bg-pattern-solid">백지</option>
+                    <option value="bg-pattern-dark">다크 모드</option>
+                </select>
+            </div>
+            <div class="input-row">
+                <label for="font-select" style="display:block; margin-bottom:5px;">폰트 스타일</label>
+                <select id="font-select">
+                    <option value="font-theme-default">고딕 + 손글씨</option>
+                    <option value="font-theme-serif">명조 + 세리프</option>
+                    <option value="font-theme-cute">전체 손글씨</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 1. 이미지 -->
+        <div class="control-group">
+            <h3>📷 캐릭터 이미지</h3>
+            <div class="input-row">
+                <label><input type="checkbox" id="check-fullbody" checked> 전신 이미지</label>
+                <div class="upload-group">
+                    <div class="file-input-wrapper">
+                        <label class="btn-upload">
+                            전신 이미지 업로드
+                            <input type="file" id="input-fullbody" accept="image/*">
+                        </label>
+                    </div>
+                    <button class="btn-paste" id="paste-fullbody" title="클립보드 이미지 붙여넣기">📋</button>
+                </div>
+            </div>
+            <div class="input-row">
+                <label><input type="checkbox" id="check-headshot" checked> 두상 이미지</label>
+                <div class="upload-group">
+                    <div class="file-input-wrapper">
+                        <label class="btn-upload">
+                            두상 이미지 업로드
+                            <input type="file" id="input-headshot" accept="image/*">
+                        </label>
+                    </div>
+                    <button class="btn-paste" id="paste-headshot" title="클립보드 이미지 붙여넣기">📋</button>
+                </div>
+            </div>
+            <div class="input-row">
+                 <label><input type="checkbox" id="check-sticker" checked> SD 스티커</label>
+                 <div class="upload-group">
+                     <div class="file-input-wrapper">
+                        <label class="btn-upload">
+                            SD 스티커 업로드
+                            <input type="file" id="input-sticker" accept="image/*">
+                        </label>
+                    </div>
+                    <button class="btn-paste" id="paste-sticker" title="클립보드 이미지 붙여넣기">📋</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 텍스트 정보 -->
+        <div class="control-group">
+            <h3>📝 캐릭터 정보</h3>
+            <div class="input-row">
+                <label><input type="checkbox" id="check-name" checked> 캐릭터 이름</label>
+                <input type="text" id="input-name" placeholder="이름을 입력하세요" value="이름 (Name)">
+            </div>
+            <div class="input-row">
+                <label><input type="checkbox" id="check-subname" checked> 서브 이름/문구</label>
+                <input type="text" id="input-subname" placeholder="영문 이름 또는 문구" value="Character Catchphrase">
+            </div>
+        </div>
+
+        <!-- 3. 음악 -->
+        <div class="control-group">
+            <h3>🎵 모티브 곡</h3>
+            <div class="input-row">
+                <label><input type="checkbox" id="check-music" checked> 노래 정보 & 앨범아트</label>
+                <input type="text" id="input-song" placeholder="곡 제목" value="Song Title" style="margin-bottom:4px;">
+                <input type="text" id="input-artist" placeholder="아티스트 (줄바꿈)" value="Artist Name">
+                <div class="upload-group" style="margin-top:4px;">
+                    <div class="file-input-wrapper">
+                        <label class="btn-upload">
+                            앨범 커버 업로드
+                            <input type="file" id="input-album" accept="image/*">
+                        </label>
+                    </div>
+                    <button class="btn-paste" id="paste-album" title="클립보드 이미지 붙여넣기">📋</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4~6. 모티브 (외부 작품) -->
+        <div class="control-group">
+            <h3>🧩 모티브</h3>
+            
+            <div class="input-row">
+                <label><input type="checkbox" id="check-motif1" checked> 모티브 1</label>
+                <div class="upload-group">
+                    <div class="file-input-wrapper">
+                        <label class="btn-upload">
+                            이미지 1 업로드
+                            <input type="file" id="input-motif1-img" accept="image/*">
+                        </label>
+                    </div>
+                    <button class="btn-paste" id="paste-motif1" title="클립보드 이미지 붙여넣기">📋</button>
+                </div>
+                <input type="text" id="input-motif1-text" placeholder="설명 1" value="Motif 01" style="margin-top:4px;">
+            </div>
+
+            <div class="input-row">
+                <label><input type="checkbox" id="check-motif2" checked> 모티브 2</label>
+                <div class="upload-group">
+                    <div class="file-input-wrapper">
+                        <label class="btn-upload">
+                            이미지 2 업로드
+                            <input type="file" id="input-motif2-img" accept="image/*">
+                        </label>
+                    </div>
+                    <button class="btn-paste" id="paste-motif2" title="클립보드 이미지 붙여넣기">📋</button>
+                </div>
+                <input type="text" id="input-motif2-text" placeholder="설명 2" value="Motif 02" style="margin-top:4px;">
+            </div>
+
+            <div class="input-row">
+                <label><input type="checkbox" id="check-motif3" checked> 모티브 3</label>
+                <div class="upload-group">
+                    <div class="file-input-wrapper">
+                        <label class="btn-upload">
+                            이미지 3 업로드
+                            <input type="file" id="input-motif3-img" accept="image/*">
+                        </label>
+                    </div>
+                    <button class="btn-paste" id="paste-motif3" title="클립보드 이미지 붙여넣기">📋</button>
+                </div>
+                <input type="text" id="input-motif3-text" placeholder="설명 3" value="Motif 03" style="margin-top:4px;">
+            </div>
+        </div>
+
+        <!-- 7. 총평 -->
+        <div class="control-group">
+            <h3>💬 코멘트</h3>
+            <div class="input-row">
+                <label><input type="checkbox" id="check-comment" checked> 총평</label>
+                <textarea id="input-comment" rows="3" placeholder="1~2줄의 총평">캐릭터에 대한 간단한 코멘트나 설정을 적어주세요.</textarea>
+            </div>
+        </div>
+
+        <button class="download-btn" onclick="downloadImage()">💾 이미지로 저장하기</button>
+    </aside>
+
+    <!-- 오른쪽 미리보기 캔버스 -->
+    <main class="preview-container">
+        <!-- 배경 패턴, 폰트 테마 기본값 적용 -->
+        <div id="canvas-area" class="bg-pattern-dot font-theme-default">
+            
+            <!-- 이름 영역 -->
+            <div id="module-header" class="header-module">
+                <div id="disp-name" class="char-name">이름 (Name)</div>
+                <div id="disp-subname" class="char-catchphrase">Character Catchphrase</div>
+            </div>
+
+            <!-- 전신 이미지: <img> 태그 사용 -->
+            <div id="module-fullbody" class="module fullbody-module">
+                <div class="tape"></div>
+                <div class="img-wrapper" id="wrap-fullbody">
+                    <img id="disp-fullbody" class="real-img" src="">
+                </div>
+                <div class="placeholder" id="ph-fullbody">Full Body Image</div>
+            </div>
+
+            <!-- 두상 이미지 -->
+            <div id="module-headshot" class="module headshot-module">
+                <div class="headshot-frame">
+                    <div class="img-wrapper" id="wrap-headshot">
+                        <img id="disp-headshot" class="real-img" src="">
+                    </div>
+                    <div class="placeholder" id="ph-headshot">Head</div>
+                </div>
+            </div>
+
+            <!-- 음악 정보 -->
+            <div id="module-music" class="module music-module">
+                <div class="album-art">
+                    <div class="img-wrapper" id="wrap-album">
+                        <img id="disp-album" class="real-img" src="">
+                    </div>
+                    <div class="placeholder" id="ph-album" style="background:#333; color:#777;">CD</div>
+                </div>
+                <div class="music-info">
+                    <div id="disp-song" class="music-title">Song Title</div>
+                    <div id="disp-artist" class="music-artist">Artist Name</div>
+                </div>
+            </div>
+
+            <!-- 모티브 그리드 -->
+            <div class="motif-grid">
+                <!-- 모티브 1 -->
+                <div id="module-motif1" class="motif-card">
+                    <div class="tape" style="transform: rotate(2deg);"></div>
+                    <div class="motif-img-area">
+                        <div class="img-wrapper" id="wrap-motif1">
+                            <img id="disp-motif1" class="real-img" src="">
+                        </div>
+                        <div class="placeholder" id="ph-motif1">#1</div>
+                    </div>
+                    <div id="disp-motif1-text" class="motif-text">Motif 01</div>
+                </div>
+                
+                <!-- 모티브 2 -->
+                <div id="module-motif2" class="motif-card">
+                    <div class="tape"></div>
+                    <div class="motif-img-area">
+                        <div class="img-wrapper" id="wrap-motif2">
+                            <img id="disp-motif2" class="real-img" src="">
+                        </div>
+                        <div class="placeholder" id="ph-motif2">#2</div>
+                    </div>
+                    <div id="disp-motif2-text" class="motif-text">Motif 02</div>
+                </div>
+
+                <!-- 모티브 3 -->
+                <div id="module-motif3" class="motif-card">
+                    <div class="tape" style="transform: rotate(-3deg);"></div>
+                    <div class="motif-img-area">
+                        <div class="img-wrapper" id="wrap-motif3">
+                            <img id="disp-motif3" class="real-img" src="">
+                        </div>
+                        <div class="placeholder" id="ph-motif3">#3</div>
+                    </div>
+                    <div id="disp-motif3-text" class="motif-text">Motif 03</div>
+                </div>
+            </div>
+
+            <!-- 코멘트 -->
+            <div id="module-comment" class="module comment-module">
+                <div id="disp-comment" class="comment-text">캐릭터에 대한 간단한 코멘트나 설정을 적어주세요.</div>
+            </div>
+
+            <div id="module-sticker" class="sticker-module">
+                <img id="disp-sticker" class="sticker-img" src="" style="display:none;">
+            </div>
+
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
