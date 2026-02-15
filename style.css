@@ -259,7 +259,7 @@ input[type="text"]:focus, textarea:focus, select:focus {
 .bg-pattern-paper { background-color: #fdf6e3; background-image: repeating-linear-gradient(transparent, transparent 29px, #d1d1d1 30px); background-size: 100% 30px; }
 .bg-pattern-solid { background-image: none; background-color: #ffffff; }
 .bg-pattern-dark { background-color: #2c2c2c; background-image: radial-gradient(#444 1px, transparent 1px); background-size: 20px 20px; color: #eee; }
-.bg-pattern-dark .char-name { color: #fff !important; }
+.bg-pattern-dark .char-name { color: #333 !important; }
 .bg-pattern-dark .module, .bg-pattern-dark .motif-card { background: #333; border-color: #444; color: #eee; }
 
 /* --- 레이아웃 모듈 --- */
