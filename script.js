@@ -94,7 +94,7 @@ function toggleVisibility(checkId, elementId) {
 // --- 초기화 실행 ---
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. 이미지 연결 (Manual Cover 적용)
+    // 1. 이미지 연결
     setupImageHandlers('input-fullbody', 'paste-fullbody', 'disp-fullbody', 'ph-fullbody');
     setupImageHandlers('input-headshot', 'paste-headshot', 'disp-headshot', 'ph-headshot');
     setupImageHandlers('input-album', 'paste-album', 'disp-album', 'ph-album');
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupImageHandlers('input-motif2-img', 'paste-motif2', 'disp-motif2', 'ph-motif2');
     setupImageHandlers('input-motif3-img', 'paste-motif3', 'disp-motif3', 'ph-motif3');
     
-    // 스티커는 일반 img 처리 (isSticker = true)
+    // 스티커는 일반 img 처리
     setupImageHandlers('input-sticker', 'paste-sticker', 'disp-sticker', null, true);
 
     // 2. 텍스트 연결
@@ -114,6 +114,9 @@ document.addEventListener('DOMContentLoaded', () => {
     syncText('input-motif2-text', 'disp-motif2-text');
     syncText('input-motif3-text', 'disp-motif3-text');
     syncText('input-comment', 'disp-comment');
+            
+    syncText('input-fullbody-source', 'disp-fullbody-source');
+    syncText('input-headshot-source', 'disp-headshot-source');
 
     // 3. 토글 연결
     toggleVisibility('check-name', 'module-header');
@@ -147,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. 배경 및 폰트 설정 연결
     const bgSelect = document.getElementById('bg-select');
     bgSelect.addEventListener('change', function(e) {
-        canvasArea.classList.remove('bg-pattern-dot', 'bg-pattern-grid', 'bg-pattern-paper', 'bg-pattern-solid', 'bg-pattern-dark');
+        canvasArea.classList.remove('bg-pattern-grid', 'bg-pattern-paper', 'bg-pattern-dot', 'bg-pattern-solid', 'bg-pattern-dark');
         canvasArea.classList.add(e.target.value);
     });
 

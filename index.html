@@ -25,9 +25,9 @@
             <div class="input-row">
                 <label for="bg-select" style="display:block; margin-bottom:5px;">배경 스타일</label>
                 <select id="bg-select">
-                    <option value="bg-pattern-dot">도트 패턴</option>
                     <option value="bg-pattern-grid">모눈종이</option>
                     <option value="bg-pattern-paper">줄글 노트</option>
+                    <option value="bg-pattern-dot">도트 패턴</option>
                     <option value="bg-pattern-solid">백지</option>
                     <option value="bg-pattern-dark">다크 모드</option>
                 </select>
@@ -56,6 +56,7 @@
                     </div>
                     <button class="btn-paste" id="paste-fullbody" title="클립보드 이미지 붙여넣기">📋</button>
                 </div>
+                <input type="text" id="input-fullbody-source" placeholder="출처 입력" style="margin-top:4px; font-size:0.8rem;">
             </div>
             <div class="input-row">
                 <label><input type="checkbox" id="check-headshot" checked> 두상 이미지</label>
@@ -68,6 +69,7 @@
                     </div>
                     <button class="btn-paste" id="paste-headshot" title="클립보드 이미지 붙여넣기">📋</button>
                 </div>
+                <input type="text" id="input-headshot-source" placeholder="출처 입력" style="margin-top:4px; font-size:0.8rem;">
             </div>
             <div class="input-row">
                  <label><input type="checkbox" id="check-sticker" checked> SD 스티커</label>
@@ -177,7 +179,7 @@
     <!-- 오른쪽 미리보기 캔버스 -->
     <main class="preview-container">
         <!-- 배경 패턴, 폰트 테마 기본값 적용 -->
-        <div id="canvas-area" class="bg-pattern-dot font-theme-default">
+        <div id="canvas-area" class="bg-pattern-grid font-theme-default">
             
             <!-- 이름 영역 -->
             <div id="module-header" class="header-module">
@@ -185,13 +187,14 @@
                 <div id="disp-subname" class="char-catchphrase">Character Catchphrase</div>
             </div>
 
-            <!-- 전신 이미지: <img> 태그 사용 -->
+            <!-- 전신 이미지 -->
             <div id="module-fullbody" class="module fullbody-module">
                 <div class="tape"></div>
                 <div class="img-wrapper" id="wrap-fullbody">
                     <img id="disp-fullbody" class="real-img" src="">
                 </div>
                 <div class="placeholder" id="ph-fullbody">Full Body Image</div>
+                <div id="disp-fullbody-source" class="source-badge"></div>
             </div>
 
             <!-- 두상 이미지 -->
@@ -201,6 +204,7 @@
                         <img id="disp-headshot" class="real-img" src="">
                     </div>
                     <div class="placeholder" id="ph-headshot">Head</div>
+                    <div id="disp-headshot-source" class="source-badge"></div>
                 </div>
             </div>
 

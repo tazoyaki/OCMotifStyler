@@ -221,37 +221,17 @@ input[type="text"]:focus, textarea:focus, select:focus {
     transition: background-image 0.3s;
 }
 
-/* --- 폰트 테마 클래스 --- */
-.font-theme-default .char-name, .font-theme-default .music-title {
-    font-family: 'Noto Sans KR', sans-serif;
-}
-.font-theme-default .char-catchphrase, .font-theme-default .motif-text, .font-theme-default .comment-text {
-    font-family: 'Gamja Flower', cursive;
-}
-.font-theme-default .music-artist {
-    font-family: 'Noto Sans KR', sans-serif;
-}
+/* --- 폰트 테마 --- */
+.font-theme-default .char-name, .font-theme-default .music-title { font-family: 'Noto Sans KR', sans-serif; }
+.font-theme-default .char-catchphrase, .font-theme-default .motif-text, .font-theme-default .comment-text { font-family: 'Gamja Flower', cursive; }
+.font-theme-default .music-artist, .font-theme-default .source-badge { font-family: 'Noto Sans KR', sans-serif; }
 
-/* 명조 */
-.font-theme-serif .char-name, .font-theme-serif .music-title {
-    font-family: 'Noto Serif KR', serif;
-}
-.font-theme-serif .char-catchphrase, .font-theme-serif .motif-text {
-    font-family: 'Song Myung', serif;
-}
-.font-theme-serif .comment-text {
-    font-family: 'Nanum Myeongjo', serif;
-}
-.font-theme-serif .music-artist {
-    font-family: 'Nanum Myeongjo', serif;
-}
+.font-theme-serif .char-name, .font-theme-serif .music-title { font-family: 'Noto Serif KR', serif; }
+.font-theme-serif .char-catchphrase, .font-theme-serif .motif-text { font-family: 'Song Myung', serif; }
+.font-theme-serif .comment-text, .font-theme-serif .music-artist, .font-theme-serif .source-badge { font-family: 'Nanum Myeongjo', serif; }
 
-/* 귀여움 */
-.font-theme-cute .char-name, .font-theme-cute .music-title, 
-.font-theme-cute .char-catchphrase, .font-theme-cute .motif-text, 
-.font-theme-cute .comment-text, .font-theme-cute .music-artist {
-    font-family: 'Gamja Flower', cursive;
-}
+.font-theme-cute .char-name, .font-theme-cute .music-title, .font-theme-cute .char-catchphrase, 
+.font-theme-cute .motif-text, .font-theme-cute .comment-text, .font-theme-cute .music-artist, .font-theme-cute .source-badge { font-family: 'Gamja Flower', cursive; }
 
 /* 배경 패턴 */
 .bg-pattern-dot { background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e6e6e6' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E"); }
@@ -261,19 +241,6 @@ input[type="text"]:focus, textarea:focus, select:focus {
 .bg-pattern-dark { background-color: #2c2c2c; background-image: radial-gradient(#444 1px, transparent 1px); background-size: 20px 20px; color: #eee; }
 .bg-pattern-dark .char-name { color: #333 !important; }
 .bg-pattern-dark .module, .bg-pattern-dark .motif-card { background: #333; border-color: #444; color: #eee; }
-
-/* --- 레이아웃 모듈 --- */
-.module {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 2px 4px 12px rgba(0,0,0,0.06);
-    padding: 1rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #eee;
-    transition: all 0.3s ease;
-}
 
 .hidden { display: none !important; }
 
@@ -318,6 +285,9 @@ input[type="text"]:focus, textarea:focus, select:focus {
 }
 
 .img-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -325,10 +295,33 @@ input[type="text"]:focus, textarea:focus, select:focus {
     justify-content: center;
     align-items: center;
     background: #fff;
+    border-radius: inherit; /* 부모 둥글기 상속 */
 }
 
 .real-img {
     display: block;
+}
+
+.source-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: #555;
+    backdrop-filter: blur(2px);
+    z-index: 15;
+    border: 1px solid rgba(0,0,0,0.1);
+    max-width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.source-badge:empty {
+    display: none;
 }
 
 /* 1. 메인 헤더 */
@@ -368,6 +361,7 @@ input[type="text"]:focus, textarea:focus, select:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 /* 3. 두상 이미지 */
@@ -384,8 +378,10 @@ input[type="text"]:focus, textarea:focus, select:focus {
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid #ddd;
+    display: flex;
     align-items: center;
     justify-content: center;
+    position: relative; /* 중요 */
 }
 
 /* 4. 음악 정보 */
@@ -404,8 +400,10 @@ input[type="text"]:focus, textarea:focus, select:focus {
     background: #444;
     border-radius: 4px;
     overflow: hidden;
+    display: flex;
     align-items: center;
     justify-content: center;
+    position: relative; /* 중요 */
 }
 .music-title { font-weight: 700; font-size: 1.1rem; }
 .music-artist { font-size: 0.8rem; opacity: 0.8; white-space: pre-wrap; }
@@ -478,8 +476,10 @@ input[type="text"]:focus, textarea:focus, select:focus {
     margin-bottom: 0.8rem;
     overflow: hidden;
     border: 1px solid #ddd;
+    display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .motif-text {
